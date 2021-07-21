@@ -60,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
         position: "absolute",
         left: '10px',
         maxWidth: 'calc(100% - 50px)',
+        transition: 'width 0.5s',
         bottom: '66px',
         backgroundColor: '#2f2d2d',
         opacity: 0.7
@@ -85,10 +86,10 @@ export default function Module2(props) {
             <div className={classes.StyledTabs}
                 style={{
                     borderRadius: more ? '0 30px 30px 0' : '50%',
+                    width: more ? 'calc(100% - 50px)' : '50px'
                 }}>
                 {
                     more ? <><StyledTabs
-                        centered
                         className={classes.tabs}
                         value={props.value}
                         onChange={handleChange}

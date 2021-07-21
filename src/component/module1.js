@@ -96,7 +96,7 @@ export default function ScrollableTabsButtonForce() {
             {
                 tabs.map(function (tab, index) {
                     return (<TabPanel key={tab.label} value={value} index={index} class={classes.TabPanel} img={tab.url || img}>
-                        Item One example {tab.label}
+                        <div className="bottomAni">Item One example {tab.label}</div>
                     </TabPanel>)
                 })
             }
