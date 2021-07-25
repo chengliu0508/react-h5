@@ -3,20 +3,17 @@ Page({
     formData: {
     },
     rules: [{
-      name: 'customerName',
+      name: 'salerName',
       rules: {
         required: true,
         message: '昵称是必选项'
       },
     }, {
-      name: 'customerMobile',
+      name: 'salerCompany',
       rules: [{
         required: true,
-        message: 'mobile必填'
-      }, {
-        mobile: true,
-        message: 'mobile格式不对'
-      }],
+        message: '公司必填'
+      },
     }],
     companylist:[]
   },
@@ -56,7 +53,7 @@ Page({
         if(res.userInfo){
           getApp().globalData.userInfo = res.userInfo
           _this.setData({
-            [`formData.customerName`]: res.userInfo.nickName
+            [`formData.salerName`]: res.userInfo.nickName
           })
         }
       }
@@ -94,9 +91,9 @@ Page({
         }
       } else {
         wx.request({
-          url: 'https://www.szzxh.top/api/customer/register',
+          url: 'https://www.szzxh.top/api/saler/register',
           data:{
-            customerOpenId:getApp().globalData.code,
+            salerOpenid:getApp().globalData.code,
             ...this.data.formData
           },
           success(res) {

@@ -1,15 +1,15 @@
 <view class="userinfo">
   <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
   <mp-form title="注册账号" id="form" rules="{{rules}}" models="{{formData}}">
-      <mp-cell prop="customerName" title="昵称" ext-class="">
-        <input value="{{formData.customerName}}" bindinput="formInputChange" data-field="customerName"
+      <mp-cell prop="salerName" title="昵称" ext-class="">
+        <input value="{{formData.salerName}}" bindinput="formInputChange" data-field="salerName"
           class="weui-input" placeholder="请输入昵称" />
           <view slot="footer" class="weui-vcode-btn">
           <button class="getinfo-btn" bindtap="getUserProfile" type="default" size="mini"> 获取昵称 </button>
         </view>
       </mp-cell>
-      <mp-cell prop="customerMobile" title="手机号" ext-class="weui-cell_vcode">
-        <input bindinput="formInputChange" data-field="customerMobile" class="weui-input" type="number"
+      <mp-cell prop="salerCompany" title="手机号" ext-class="weui-cell_vcode">
+        <input bindinput="formInputChange" data-field="salerCompany" class="weui-input" type="number"
           placeholder="请输入手机号" />
         <view slot="footer" class="weui-vcode-btn">
           <button  class="getinfo-btn" open-type="getPhoneNumber" bindgetphonenumber="getUserPhone" type="default" size="mini"> 获取手机号 </button>
