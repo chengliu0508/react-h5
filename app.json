@@ -1,13 +1,18 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/login/login",
+    "pages/client/client",
+    "pages/webview/webview"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarTitleText": "房地产",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
+  },
+  "useExtendedLib": {
+    "weui": true
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

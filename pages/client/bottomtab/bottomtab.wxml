@@ -1,0 +1,9 @@
+<view class="{{modulearr.length > 5 ?'client-tabcom iw-menu-container overnum':'client-tabcom iw-menu-container'}}">
+   <view class="pull-left" wx:if="{{modulearr.length > 5}}"><mp-icon icon="back" color="black" size="{{12}}"></mp-icon></view>
+   <view class="tabcom-container">
+      <view class="tabcom-container-scroll">
+        <view wx:for="{{modulearr}}" wx:key="index" bindtap="tapmodule" data-index="{{index}}" class="{{active == index?'active':''}}">{{item.name}}</view>
+      </view>
+   </view>
+   <view class="pull-right" wx:if="{{modulearr.length > 5}}"><mp-icon icon="arrow" color="black" size="{{16}}"></mp-icon></view>
+</view>>

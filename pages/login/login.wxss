@@ -1,0 +1,14 @@
+page,.userinfo{
+  height:100%;
+}
+page{
+  text-align: center;
+}
+.exit-btn{
+  padding:15rpx;
+  color:blue;
+  text-decoration: underline;
+}
+.getinfo-btn{
+  margin:27rpx 0;
+}

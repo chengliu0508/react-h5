@@ -1,0 +1,24 @@
+<view class="client2-page">
+
+<mp-tabs 
+  tabs="{{activeitem.data}}" 
+  activeTab="{{activeTab}}" 
+  swiperClass="client2-page-tab"
+  bindtabclick="onTabClick"
+  bindchange="onChange"
+  activeClass="tab-bar-title__selected"
+  
+>
+  <block wx:for="{{activeitem.data}}" wx:key="title">
+    <view class="tab-content" data-set="{{item}}" slot="tab-content-{{index}}" bind:tap="handleClick" >
+      <image src="{{item.img}}" mode="scaleToFill"></image>
+      <view class="client2-page-item">
+        <text class="item-desc">{{item.title2}}</text>
+        <view class="item-desc">
+        {{item.desc}}
+        </view>
+      </view>
+    </view>
+  </block>
+</mp-tabs>
+</view>

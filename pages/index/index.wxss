@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   color: #aaa;
+  margin:20rpx;
 }
 
 .userinfo-avatar {

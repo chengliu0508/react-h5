@@ -1,0 +1,44 @@
+.client-tabcom,.tabcom-container,.tabcom-container-scroll{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+}
+.overnum .tabcom-container{
+  justify-content: left;
+}
+.pull-left,.pull-right{
+  height: 90rpx;
+  position: relative;
+  width:50rpx;
+}
+.pull-left{
+  top:12rpx;
+  text-align: right;
+}
+.pull-right{
+  top:14rpx;
+  text-align: left;
+}
+
+.tabcom-container{
+  width:calc(100% - 80rpx);
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+.tabcom-container .tabcom-container-scroll>view{
+  width: 120rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color:#fff;
+  cursor: pointer;
+}
+
+.tabcom-container .tabcom-container-scroll>view.active{
+  color:cornflowerblue;
+  font-weight: 600;
+}

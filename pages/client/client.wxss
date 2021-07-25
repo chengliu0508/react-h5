@@ -1,0 +1,33 @@
+page{
+  height:100%;
+  position: fixed;
+  background: #666;
+}
+.cilent-page{
+   height:calc(100% - 134rpx);
+}
+
+.cilent-page-bottomtab{
+  background: #666;
+  opacity: 0.7;
+   position: absolute;
+   bottom:0;
+   left:0;
+   right:0;
+}
+
+/*module2组件样式*/
+.weui-tabs,.client2-page-tab{
+  height:100%;
+}
+.weui-tabs-bar__wrp {
+  border-bottom: 1px solid #eee;
+  margin-top: 10px;
+}
+.weui-tabs-bar__title {
+  margin: 0px 10px;
+}
+.tab-bar-title__selected {
+  font-size: 20px;
+  font-weight: bold;
+}

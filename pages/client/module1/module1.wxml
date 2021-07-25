@@ -1,0 +1,14 @@
+<view class="module1-com">
+   <image src="{{current.url}}" width="100%" mode="scaleToFill"></image>
+   <!--web-view src="{{url}}" class="client-web-view"></web-view-->
+   <view class="house-detail">你正在查看房型--{{current && current.title}}</view>
+   <view class="iw-vr-thumb-content">
+      <view class="iw-vr-thumb-container" wx:if="{{showlist}}">
+         <view class="iw-vr-thumb-item action" wx:for="{{module1}}" wx:key="index" bindtap="selectImg" data-index="{{index}}">
+            <image class="{{item.title ===current.title?'img-active':'' }}" src="{{item.url}}" width="100%" mode="scaleToFill"></image>
+            <view>{{item.title}}</view>
+         </view>
+      </view>
+      <view class="tab-expand" bindtap="closelist">{{showlist?'收起':'展开'}}</view>
+   </view>
+</view>

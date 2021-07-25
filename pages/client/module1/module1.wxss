@@ -1,0 +1,55 @@
+
+.module1-com image,.module1-com .client-web-view{
+  width:100%;
+  height:calc(100% - 134rpx);
+  position: absolute;
+}
+
+.iw-vr-thumb-content{
+   position: absolute;
+   bottom:134rpx;
+   left:0;
+   right:0;
+   height:146rpx;
+   display: flex;
+   flex-direction:row;
+}
+.iw-vr-thumb-content .iw-vr-thumb-container{
+  display:flex;
+  flex-direction:row;
+  padding-right:20rpx;
+  padding-left:10rpx;
+  background: #999;
+  opacity: 0.7;
+}
+.iw-vr-thumb-content .tab-expand{
+  width: 40rpx;
+  height: 120rpx;
+  padding:10rpx;
+  background: #999;
+  opacity: 0.7;
+  border-radius: 0 60rpx 60rpx 0;
+}
+.iw-vr-thumb-content .iw-vr-thumb-container .iw-vr-thumb-item {
+  width: 120rpx;
+  height: 120rpx;
+  padding:10rpx;
+}
+.iw-vr-thumb-content .iw-vr-thumb-container .iw-vr-thumb-item image{
+   display: block;
+    width: 120rpx;
+    height: 120rpx;
+    border:#fff 2rpx solid;
+}
+
+.iw-vr-thumb-content .iw-vr-thumb-container .iw-vr-thumb-item image.img-active{
+   border: green 5rpx solid;
+}
+.iw-vr-thumb-content .iw-vr-thumb-container .iw-vr-thumb-item>view{
+    position: relative;
+    text-align: center;
+}
+
+.house-detail{
+  position: relative;
+}

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "bottomtab": "./bottomtab/bottomtab",
+    "modele1":"./module1/module1",
+    "modele2":"./module2/module2"
+  }
+}

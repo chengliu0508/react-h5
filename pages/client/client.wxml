@@ -1,0 +1,5 @@
+<view class="cilent-page">
+    <modele1 wx:if="{{activeitem.type === 1}}" activeitem="{{activeitem}}"></modele1>
+    <modele2  wx:else  activeitem="{{activeitem}}"></modele2>
+</view>
+<bottomtab  class="cilent-page-bottomtab" bindcurrentChange="currentChange" modulearr="{{modulearr}}"></bottomtab>
