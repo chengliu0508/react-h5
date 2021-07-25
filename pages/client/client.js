@@ -11,16 +11,11 @@ Page({
      this.queryModule()
   },
 
-  onShow: function () {
-
-  },
-
-  onPullDownRefresh: function () {
-
-  },
-
   onShareAppMessage: function () {
-
+   return {
+    title: "房地产页面",        // 默认是小程序的名称(可以写slogan等)
+    path: '/pages/login/login?code=12789',        // 默认是当前页面，必须是以‘/’开头的完整路径
+   }
   },
   queryModule(){
     let arr = [

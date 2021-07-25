@@ -56,8 +56,8 @@ Page({
                   }
                 } else {
                   getApp().globalData.userInfo = res.data
-                  wx.navigateTo({
-                    url: 'pages/webview/webview',
+                  wx.reLaunch({
+                    url: 'pages/client/client',
                   })
                 }
               } else {
@@ -89,7 +89,8 @@ Page({
     })
   },
   getUserPhone(e){
-    if(e.detail.errMsg == "getPhoneNumber:fail no permission"){
+    console.log('getUserPhone',e.detail)
+    if(e.detail.errMsg && !e.detail.phoneNumber){
       wx.showToast({
         icon:'error',
         title: '请手动输入！'
@@ -137,7 +138,7 @@ Page({
           success(res) {
             console.log(res)
             if (res.data && res.data.code === 0) {
-                wx.navigateTo({
+                wx.reLaunch({
                   url: '/pages/client/client',
                 })
             } 
