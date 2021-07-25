@@ -1,8 +1,6 @@
 Page({
   data: {
-    needUserInfo: false,
     formData: {
-
     },
     rules: [{
       name: 'customerName',
@@ -20,35 +18,33 @@ Page({
         message: 'mobile格式不对'
       }],
     }],
-    isAgree: false,
+    companylist:[]
   },
   onLoad() {
-    this.init()
+     this.setNavTitle()  
+     this.requestCompany()
   },
-  init() {
-    const _this = this
-    wx.login({
-      success: res => {
-        if (res.code) {
-          wx.request({
-            url: 'https://www.szzxh.top/api/saler/login',
-            data: {
-              salerOpenid: res.code
-            },
-            success(res) {
-              if (res.data) {
-                console.log('用户信息',res.data)
-                _this.setData({
-                  needUserInfo:true
-                })
-              }
-            },
-            fail(res) {
-              console.log('获取销售用户接口失败！～')
-            }
+  setNavTitle(){
+    let currenturl = getApp().getCurrentPages()
+    let register = currenturl.type ==='register'
+    wx.setNavigationBarTitle({
+      title: register?'注册':"修改信息"
+    })
+  },
+  requestCompany (){
+    let _this = this
+    wx.request({
+      url: 'https://www.szzxh.top/api/saler/getCompany', //仅为示例，并非真实的接口地址
+      data: {
+      },
+      success (res) {
+        console.log(res.data)
+        if(res.data.data){
+          _this.setData({
+            companylist:res.data.data
           })
         }
-      },
+      }
     })
   },
   getUserProfile(e) {
@@ -87,23 +83,13 @@ Page({
       [`formData.${field}`]: e.detail.value
     })
   },
-  bindAgreeChange: function (e) {
-    this.setData({
-      isAgree: !!e.detail.value.length
-    });
-  },
   submitForm() {
     this.selectComponent('#form').validate((valid, errors) => {
-      if (!valid || !this.data.isAgree) {
+      if (!valid) {
         const firstError = Object.keys(errors)
         if (firstError.length) {
           this.setData({
             error: errors[firstError[0]].message
-          })
-        }
-        if (!this.data.isAgree) {
-          this.setData({
-            error: '请先阅读并同意《相关条款》'
           })
         }
       } else {
@@ -117,7 +103,7 @@ Page({
             console.log(res)
             if (res.data && res.data.code === 0) {
                 wx.reLaunch({
-                  url: '/pages/client/client',
+                  url: '/pages/admin/admin',
                 })
             } 
           },

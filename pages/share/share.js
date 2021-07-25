@@ -1,29 +1,40 @@
 // pages/share/share.js
 Page({
   data: {
-    admincode:''
+    adminstatus:0 // 1,2
   },
   onLoad: function (options) {
     let currenturl = getApp().getCurrentPages()
     if(currenturl.code){
       this.setData({
-        admincode:currenturl.code
+        adminstatus:1
       })
       console.log('销售端分享的code为：' + currenturl.code)
-      wx.navigateToMiniProgram({
-        appId: '', //客户端小程序appid
-        path: 'pages/login/login?code=' + currenturl.code,
-        extraData: {
-          foo: 'bar'
-        },
-        envVersion: 'develop',
-        success(res) {
-          // 打开成功
-        }
-      })
+      this.gotoLogin()
     }
   },
-  onReady: function () {
-
-  },
+  //跳转至客户端
+  gotoLogin(){
+    let currenturl = getApp().getCurrentPages()
+    let _this = this
+    wx.navigateToMiniProgram({
+      appId: '', //客户端小程序appid
+      path: 'pages/login/login?code=' + currenturl.code,
+      extraData: {
+        foo: 'bar'
+      },
+      envVersion: 'develop',
+      success(res) {
+        // 打开成功
+      },
+      fail(){
+        wx.showToast({
+          title: '点击重试!',
+        })
+        _this.setData({
+          adminstatus:2
+        })
+      }
+    })
+  }
 })

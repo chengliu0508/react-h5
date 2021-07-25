@@ -1,4 +1,4 @@
-<view class="userinfo" wx:if="{{needUserInfo}}">
+<view class="userinfo">
   <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
   <mp-form title="注册账号" id="form" rules="{{rules}}" models="{{formData}}">
       <mp-cell prop="customerName" title="昵称" ext-class="">
@@ -16,15 +16,6 @@
         </view>
       </mp-cell>
   </mp-form>
-
-  <checkbox-group bindchange="bindAgreeChange" style="margin-top:32rpx;">
-      <label class="weui-agree" for="weuiAgree">
-        <view class="weui-agree__text">
-          <checkbox id="weuiAgree" value="agree" checked="{{isAgree}}" />
-          阅读并同意<navigator url="" class="weui-agree__link">《相关条款》</navigator>
-        </view>
-      </label>
-  </checkbox-group>
   <view class="weui-btn-area">
       <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
   </view>

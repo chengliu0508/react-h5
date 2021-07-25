@@ -1,5 +1,9 @@
 
-<text wx:if="{{admincode}}">跳转至客户端页面...</text>
+<text wx:if="{{adminstatus === 1}}">正在跳转至客户端页面...</text>
+<block wx:elif="{{adminstatus === 2}}">
+  <button bindtap="gotoLogin" type="primary">点击重试</button>
+</block>
 <block wx:else>
-  <view>请确认该页面是销售端分享...</view>
+  <view>请确认该页面是由销售端分享...</view>
+  <navigator class="exit-btn" open-type="exit" target="miniProgram" hover-class="navigator-hover">点击退出</navigator>
 </block>
