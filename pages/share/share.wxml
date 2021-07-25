@@ -1,0 +1,5 @@
+
+<text wx:if="{{admincode}}">跳转至客户端页面...</text>
+<block wx:else>
+  <view>请确认该页面是销售端分享...</view>
+</block>

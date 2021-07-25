@@ -1,0 +1,29 @@
+/* pages/admin/admin.wxss */
+.admin-page{
+  text-align: center;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #aaa;
+  margin:20rpx;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.share .canvas{
+   margin-top:20rpx;
+   border:1rpx solid #666;
+}
+.times{
+  margin:20rpx;
+  color: burlywood;
+  border-top: 1rpx solid #eeeeee;
+}

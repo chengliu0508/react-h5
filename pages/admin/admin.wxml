@@ -1,0 +1,5 @@
+<view class="admin-page">
+    <homeCom wx:if="{{!current}}"></homeCom>
+    <visitCom wx:else></visitCom>
+    <bottomTab bindcurrentChange="currentChange"></bottomTab>
+</view>

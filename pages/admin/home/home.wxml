@@ -1,0 +1,23 @@
+<view class="home-component">
+    <view class="userinfo">
+       <image class="img" mode="scaleToFill" src="../../../images/niuniu.jpg"  width="100%"> </image>
+       <view class="edit">
+          <text bindtap="edit" class="edit-button">编辑</text>
+       </view>
+       <view class="info">
+         <view class="info-collect">收藏：0</view>
+         <view class="info-like">点赞：0</view>
+         <view class="info-hot">人气：0</view>
+       </view>
+    </view>
+    <view class="share">
+       <view class="nickName">{{userInfo.nickName}}</view>
+        <button class="weui-btn" type="primary" open-type="share">分享给微信好友</button>
+        <view class="qrcode">二维码区域</view>
+    </view>
+    <view class="share-times">
+      <cover-image class="share-times-img" src="../../../images/niuniu.jpg"> </cover-image>
+      <text class="share-times-time">666</text>
+      <text class="share-times-visit">次浏览</text>
+    </view>
+</view>

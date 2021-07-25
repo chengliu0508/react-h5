@@ -1,0 +1,80 @@
+.home-component{
+  text-align: center;
+}
+
+.userinfo{
+  height:400rpx;
+  position: relative;
+}
+.img{
+  height:400rpx;
+  width:100%;
+  position: absolute;
+  left:0;
+  z-index: 0;
+}
+
+.edit{
+  position: relative;
+  z-index: 100;
+}
+.edit .edit-button{
+  z-index: 100;
+  position: absolute;
+  top:30rpx;
+  right:30rpx;
+  background-color: #2196f3;
+  border-radius: 10rpx;
+  padding:5rpx 20rpx;
+  color:#fff;
+}
+
+.info{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  line-height: 40rpx;
+  padding:10rpx 0;
+  background-color: rgb(77, 75, 75,0.3);
+  top:340rpx;
+}
+.info view{
+  padding-left:10rpx;
+}
+
+.nickName{
+  text-align: left;
+  font-size: 40rpx;
+  padding:10rpx 20rpx;
+}
+
+.qrcode{
+  width:300rpx;
+  height:300rpx;
+  border: 1rpx solid #333;
+  margin:20rpx auto;
+}
+
+.share-times{
+  display: flex;
+  justify-content: left;
+  border-top:1rpx solid #aaa;
+  margin:20rpx;
+  padding:20rpx;
+  line-height: 60rpx;
+}
+.share-times-img{
+   width:60rpx;
+   height:60rpx;
+   margin-right:30rpx;
+   border-radius: 50%;
+   
+}
+.share-times-time{
+  color: chocolate;
+  font-size: 60rpx;
+  margin-right:6rpx;
+}
+.share-times-visit{
+   font-size: 30rpx;
+}

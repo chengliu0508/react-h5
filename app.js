@@ -1,19 +1,25 @@
 // app.js
 App({
   onLaunch() {
-    // 展示本地存储能力
-    const logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
-    // 登录
-    wx.login({
+    wx.getShareInfo({
       success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        console.log('wx.getShareInfo',res)
       }
     })
   },
   globalData: {
+    code:0,
+    phone:'',
     userInfo: null
-  }
+  },
+  getCurrentPages: function(){
+    　　var pages = getCurrentPages();    //获取加载的页面
+    　　var currentPage = pages[pages.length - 1];  //获取当前页面的对象
+    　　var url = currentPage.route;  //当前页面url
+    　　var options = currentPage.options;   //获取url中所带的参数
+    　　return {
+          url,
+          ...options
+        }
+    }
 })

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "bottomTab": "./bottomtab1/bottomtab1",
+    "homeCom":"./home/home",
+    "visitCom":"./visit/visit"
+  }
+}
