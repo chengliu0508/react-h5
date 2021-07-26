@@ -5,29 +5,30 @@ Page({
   },
   onLoad(){
      this.setNavTitle()
-
      this.init()
   },
   init() {
     const _this = this
     wx.login({
-      success: res => {
-        if (res.code) {
+      success: res0 => {
+        if (res0.code) {
+          getApp().globalData.code = res0.code
           wx.request({
+            method:'POST',
             url: 'https://www.szzxh.top/api/saler/login',
             data: {
-              salerOpenid: res.code
+              salerOpenid: res0.code
             },
-            success(res) {
-              if (res.data) {
-                console.log('用户信息',res.data)
-                if(res.data.code === 1){
-                  wx.reLaunch({
+            success(res1) {
+              if (res1.data) {
+                console.log('用户信息',res1.data)
+                if(res1.data.code === 1){
+                  wx.navigateTo({
                     url: '/pages/edit/login?type=register',
                   })
                 }else{
                   _this.setData({
-                    userinfo:res.data.userinfo
+                    userinfo:res1.data.userinfo
                   })
                 }
               }
@@ -43,7 +44,7 @@ Page({
   onShareAppMessage() {
     return {
       title: '房产页面',
-      path: '/pages/share/share?code='
+      path: '/pages/share/share?code=123456'
     }
   },
   setNavTitle(current){

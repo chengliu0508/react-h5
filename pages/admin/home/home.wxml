@@ -13,7 +13,7 @@
     <view class="share">
        <view class="nickName">{{userInfo.nickName}}</view>
         <button class="weui-btn" type="primary" open-type="share">分享给微信好友</button>
-        <view class="qrcode">二维码区域</view>
+      <image class="qrcode" src="{{qrcode}}" alt="二维码"></image>
     </view>
     <view class="share-times">
       <cover-image class="share-times-img" src="../../../images/niuniu.jpg"> </cover-image>

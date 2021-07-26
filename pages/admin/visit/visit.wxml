@@ -3,7 +3,7 @@
         <view class="visit-item">
           <image class="visit-img" src="{{item.img}}"></image>
          <text  class="visit-name">{{item.name}}</text>
-         <text  class="visit-phone">{{item.phone}}</text>
+         <text class="visit-phone" data-phone="{{item.phone}}" bindtap="clickphone">{{item.phone}}</text>
          <text class="visit-time">{{item.date}}</text>
         </view>
     </mp-cell>

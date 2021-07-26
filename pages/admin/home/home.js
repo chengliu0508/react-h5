@@ -10,7 +10,14 @@ Component({
   data: {
     qrcode:'',
   },
-
+  pageLifetimes:{
+    show(){
+      console.log('getApp().globalData',getApp().globalData)
+      this.setData({
+        qrcode:getApp().globalData.qrcode
+      })
+    },
+  },
   attached(){
 
   },

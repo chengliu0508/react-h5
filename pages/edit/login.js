@@ -6,15 +6,11 @@ Page({
       name: 'salerName',
       rules: {
         required: true,
-        message: '昵称是必选项'
-      },
-    }, {
-      name: 'salerCompany',
-      rules: [{
-        required: true,
-        message: '公司必填'
+        message: '名字是必选项'
       },
     }],
+    accountIndex:0,
+    companylistoptions:[],
     companylist:[]
   },
   onLoad() {
@@ -38,6 +34,7 @@ Page({
         console.log(res.data)
         if(res.data.data){
           _this.setData({
+            companylistoptions:res.data.data.map(item=>item.companyName),
             companylist:res.data.data
           })
         }
@@ -59,18 +56,10 @@ Page({
       }
     })
   },
-  getUserPhone(e){
-    console.log('getUserPhone',e.detail)
-    if(e.detail.errMsg && !e.detail.phoneNumber){
-      wx.showToast({
-        icon:'error',
-        title: '请手动输入！'
-      })
-    }else{
-      this.setData({
-        [`formData.getPhoneNumber`]: e.detail.phoneNumber
-      })
-    }
+  bindAccountChange(e){
+    this.setData({
+      accountIndex: e.detail.value
+    })
   },
   formInputChange(e) {
     const {
@@ -91,14 +80,17 @@ Page({
         }
       } else {
         wx.request({
+          method:'POST',
           url: 'https://www.szzxh.top/api/saler/register',
           data:{
             salerOpenid:getApp().globalData.code,
-            ...this.data.formData
+            salerName:this.data.formData.salerName,
+            salerCompany:this.data.companylistoptions[this.data.accountIndex]
           },
           success(res) {
-            console.log(res)
+            console.log('销售端注册成功，返回信息：',res,getApp().globalData)
             if (res.data && res.data.code === 0) {
+              getApp().globalData.qrcode = res.data.qrcode
                 wx.reLaunch({
                   url: '/pages/admin/admin',
                 })
