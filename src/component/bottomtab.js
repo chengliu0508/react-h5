@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         width: '100%',
-        backgroundColor: '#666',
+        backgroundColor: '#000',
         opacity: 0.7
     },
     tabs: {
@@ -87,8 +87,8 @@ export default function ScrollableTabsButtonForce(props) {
                 onChange={handleChange}
                 variant="scrollable"
                 scrollButtons="on"
-                indicatorColor="primary"
-                textColor="primary"
+                indicatorColor="#ffffff"
+                textColor="#ffffff"
             >
                 {
                     props.tabs.map((item, index) => {

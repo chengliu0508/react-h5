@@ -29,12 +29,13 @@ export default function App() {
     { label: 'tab6' },
   ]
   const tabs2 = [
-    { label: 'top1' },
-    { label: 'top2' },
-    { label: 'top3' },
-    { label: 'top4' },
-    { label: 'top5' },
-    { label: 'top6' },
+    { label: '区域沙盘', img: '', tabimg: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/vr/panos/ketingn0fm.tiles/thumb.jpg?t=1601282506222' },
+    { label: '项目沙盘', img: '', tabimg: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/vr/panos/zhuwei3q1l.tiles/thumb.jpg?t=1600234892242' },
+    { label: '项目沙盘日落', img: '', tabimg: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/vr/panos/720yuexiuzhanglong-xiangmu0000v83w.tiles/thumb.jpg?t=1600237375289' },
+    { label: '项目沙盘日落', img: '', tabimg: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/vr/panos/yangtai04d2.tiles/thumb.jpg?t=1601282544662' },
+    { label: '沙盘4', img: '', tabimg: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/vr/panos/720syuexiuzhanglong-quyu0000zxxa.tiles/thumb.jpg?t=1600237444562' },
+    { label: '沙盘5', img: '', tabimg: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/vr/panos/ketingn0fm.tiles/thumb.jpg?t=1601282506222' },
+    { label: '沙盘6', img: '', tabimg: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/vr/panos/zhuwei3q1l.tiles/thumb.jpg?t=1600234892242' },
   ]
   const [value, setValue] = React.useState(0);
 
