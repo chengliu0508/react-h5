@@ -87,7 +87,7 @@ export default function ScrollableTabsButtonForce() {
                     variant="scrollable"
                     scrollButtons="on"
                     indicatorColor="primary"
-                    textColor="#ffffff"
+                    textColor="primary"
                 >
                     {
                         tabs.map(function (tab, index) {
@@ -98,7 +98,7 @@ export default function ScrollableTabsButtonForce() {
             </AppBar>
             {
                 tabs.map(function (tab, index) {
-                    return (<TabPanel key={tab.label} value={value} index={index} class={classes.Tabcontainer} img={tab.url || img}>
+                    return (<TabPanel key={tab.label} value={value} index={index} className={classes.Tabcontainer} img={tab.url || img}>
                         <div className="bottomAni">
                             <div style={{
                                 width: '80%',

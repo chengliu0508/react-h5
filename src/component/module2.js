@@ -5,10 +5,6 @@ import Tab from '@material-ui/core/Tab';
 import DoubleArrow from '@material-ui/icons/DoubleArrow';
 import FirstPage from '@material-ui/icons/FirstPage';
 
-
-const img = "https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/vr/panos/ketingn0fm.tiles/thumb.jpg?t=1601282506222"
-
-
 function a11yProps(index) {
     return {
         id: `scrollable-force-tab-${index}`,
@@ -60,17 +56,27 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+
+var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
 export default function Module2(props) {
     const classes = useStyles();
     const [more, setMore] = React.useState(true);
     const [active, setActive] = React.useState(0);
-    let backimg = props.tab[active].tabimg
+    const [loading, setLoading] = React.useState(true);
+    const url = props.tab && props.tab[0] && props.tab[0].url
 
     return (
-        <div className={classes.root}
-            style={{
-                backgroundImage: `url(${backimg})`
-            }}>
+        <div className={classes.root}>
+            <iframe onLoad={() => { setLoading(false) }} style={{ display: active === 0 ? 'block' : 'none' }} title={url} src={url} frameBorder="no" width={width} height={height - 50} ></iframe>
+
+            {
+                loading ? null : props.tab.map((item, index) => {
+                    return index > 0 ? <iframe style={{ display: active === index ? 'block' : 'none' }} key={item.url} title={item.url} src={item.url} frameBorder="no" width={width} height={height - 50} ></iframe> : null
+                })
+            }
+
             <div className={classes.StyledTabs} style={{
                 width: more ? 'calc(100% - 10px)' : '40px'
             }}>

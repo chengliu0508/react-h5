@@ -34,19 +34,21 @@ function a11yProps(index) {
     };
 }
 
+var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         width: '100%',
         backgroundColor: '#000',
-        opacity: 0.7
+        minHeight: `${width / 375 * 50}`,
+        height: `${width / 375 * 50}`,
     },
     tabs: {
 
     },
     tab: {
-        height: '50px',
-        minHeight: '50px',
+        height: `${width / 375 * 50}px`,
+        minHeight: ` ${width / 375 * 50}px`,
         padding: 0,
         color: '#fff'
     }
@@ -87,8 +89,6 @@ export default function ScrollableTabsButtonForce(props) {
                 onChange={handleChange}
                 variant="scrollable"
                 scrollButtons="on"
-                indicatorColor="#ffffff"
-                textColor="#ffffff"
             >
                 {
                     props.tabs.map((item, index) => {
