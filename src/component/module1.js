@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -61,6 +61,13 @@ const useStyles = makeStyles((theme) => ({
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         // backgroundImage: `url(${img})`
+    },
+    bottomAni: {
+        padding: '10px',
+        // animation: 'myBottom 5s',
+        position: 'absolute',
+        top: '100%',
+        transition: 'top 5s',
     }
 }));
 
@@ -71,7 +78,19 @@ export default function ScrollableTabsButtonForce(props) {
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
+
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        }, 1000)
     };
+
+    const [loading, setLoading] = React.useState(true);
+
+    setTimeout(() => {
+        setLoading(false)
+    }, 1000)
+
 
     const img = "https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/pinpaijieshao_6116/images/2009301054191ij08.png?timestamp=1618365889572"
     return (
@@ -96,7 +115,7 @@ export default function ScrollableTabsButtonForce(props) {
             {
                 props.tabs1.map(function (tab, index) {
                     return (<TabPanel key={tab.label} value={value} index={index} className={classes.Tabcontainer} img={tab.url || img}>
-                        <div className="bottomAni">
+                        <div className={classes.bottomAni} style={{ top: loading ? '100%' : '100px' }}>
                             <div style={{
                                 width: '80%',
                                 textAlign: 'left',

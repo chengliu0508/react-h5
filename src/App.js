@@ -11,10 +11,13 @@ const useStyles = makeStyles({
     position: "relative"
   },
   container: {
-    height: `calc(100% - ${width / 375 * 50}px)`
+    height: '100%'
   },
-  bottom: {
-
+  bottomtab: {
+    zIndex: 100,
+    position: "absolute",
+    height: `${width / 375 * 50}px`,
+    bottom: '20px'
   }
 });
 
@@ -53,12 +56,13 @@ export default function App() {
         {value % 2 ? <Module1 tabs1={tabs1}></Module1> : <Module2 tabs2={tabs2}></Module2>}
       </div>
       <Bottomtab
+        className={classes.bottomtab}
         value={value}
         tabs={tabs}
         handleChange={e => {
           setValue(e)
         }}
-        className={classes.bottom}>
+      >
       </Bottomtab>
     </div>
 

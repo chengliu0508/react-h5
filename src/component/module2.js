@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
         position: "absolute",
         left: '0px',
         maxWidth: 'calc(100% - 16px)',
-        bottom: '66px',
+        bottom: '80px',
         color: '#fff',
         backgroundColor: '#000',
         opacity: 0.7,
@@ -59,7 +59,6 @@ const useStyles = makeStyles((theme) => ({
 
 var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-height = height - 50 / 375 * width;
 
 export default function Module2(props) {
     const classes = useStyles();
@@ -74,7 +73,7 @@ export default function Module2(props) {
 
             {
                 loading ? null : props.tabs2.map((item, index) => {
-                    return index > 0 ? <iframe style={{ display: active === index ? 'block' : 'none' }} key={item.url} title={item.url} src={item.url} frameBorder="no" width={width} height={height - 50} ></iframe> : null
+                    return index > 0 ? <iframe style={{ display: active === index ? 'block' : 'none' }} key={item.url} title={item.url} src={item.url} frameBorder="no" width={width} height={height} ></iframe> : null
                 })
             }
 
@@ -96,16 +95,16 @@ export default function Module2(props) {
                         props.tabs2.map((item, index) => {
                             const StyledTab = withStyles((theme) => ({
                                 root: {
-                                    color: '#fff',
+                                    color: 'red',
                                     opacity: 1,
                                     backgroundImage: `url(${props.tabs2[index].tabimg})`,
                                     backgroundSize: 'contain',
                                     fontWeight: theme.typography.fontWeightRegular,
-                                    fontSize: theme.typography.pxToRem(15),
+                                    fontSize: theme.typography.pxToRem(13),
                                     margin: '5px',
                                     width: '20%',
                                     height: '50px',
-                                    border: index === active ? '2px solid #fff' : 'none',
+                                    border: index === active ? '2px solid rgba(195, 156, 124, 1)' : '2px solid #fff',
                                 },
                             }))((props) => <Tab {...props} />);
                             return <StyledTab key={index} label={item.label} {...a11yProps(index)} />
