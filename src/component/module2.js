@@ -59,20 +59,21 @@ const useStyles = makeStyles((theme) => ({
 
 var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+height = height - 50 / 375 * width;
 
 export default function Module2(props) {
     const classes = useStyles();
     const [more, setMore] = React.useState(true);
     const [active, setActive] = React.useState(0);
     const [loading, setLoading] = React.useState(true);
-    const url = props.tab && props.tab[0] && props.tab[0].url
+    const url = props.tabs2 && props.tabs2[0] && props.tabs2[0].url
 
     return (
         <div className={classes.root}>
-            <iframe onLoad={() => { setLoading(false) }} style={{ display: active === 0 ? 'block' : 'none' }} title={url} src={url} frameBorder="no" width={width} height={height - 50} ></iframe>
+            <iframe onLoad={() => { setLoading(false) }} style={{ display: active === 0 ? 'block' : 'none' }} title={url} src={url} frameBorder="no" width={width} height={height} ></iframe>
 
             {
-                loading ? null : props.tab.map((item, index) => {
+                loading ? null : props.tabs2.map((item, index) => {
                     return index > 0 ? <iframe style={{ display: active === index ? 'block' : 'none' }} key={item.url} title={item.url} src={item.url} frameBorder="no" width={width} height={height - 50} ></iframe> : null
                 })
             }
@@ -92,12 +93,12 @@ export default function Module2(props) {
                     scrollButtons="off"
                 >
                     {
-                        props.tab.map((item, index) => {
+                        props.tabs2.map((item, index) => {
                             const StyledTab = withStyles((theme) => ({
                                 root: {
                                     color: '#fff',
                                     opacity: 1,
-                                    backgroundImage: `url(${props.tab[index].tabimg})`,
+                                    backgroundImage: `url(${props.tabs2[index].tabimg})`,
                                     backgroundSize: 'contain',
                                     fontWeight: theme.typography.fontWeightRegular,
                                     fontSize: theme.typography.pxToRem(15),
