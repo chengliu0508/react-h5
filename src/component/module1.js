@@ -80,17 +80,17 @@ export default function ScrollableTabsButtonForce(props) {
     const handleChange = (event, newValue) => {
         setValue(newValue);
 
-        setLoading(true)
-        setTimeout(() => {
-            setLoading(false)
-        }, 500)
+        // setLoading(true)
+        // setTimeout(() => {
+        //     setLoading(false)
+        // }, 500)
     };
 
-    const [loading, setLoading] = React.useState(true);
+    // const [loading, setLoading] = React.useState(true);
 
-    setTimeout(() => {
-        setLoading(false)
-    }, 1000)
+    // setTimeout(() => {
+    //     setLoading(false)
+    // }, 1000)
 
 
     return (
