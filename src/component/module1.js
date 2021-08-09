@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -11,9 +11,6 @@ function TabPanel(props) {
     const { children, value, index, img, ...other } = props;
     return (
         <div
-            style={{
-                backgroundImage: `url(${img})`
-            }}
             className={classes.tabpanel}
             role="tabpanel"
             hidden={value !== index}
@@ -48,19 +45,23 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         width: '100%',
         height: '100%',
+        position: "relative"
     },
     Tabs: {
-        backgroundColor: '#000',
-        color: '#fff'
+        backgroundColor: '#393939',
+        opacity: 0.7,
+        color: '#fff',
+        position: "absolute",
+        top: '10vh'
     },
     Tab: {
         color: '#fff'
     },
     Tabcontainer: {
-        height: 'calc(100% - 48px)',
+        height: '100% ',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        // backgroundImage: `url(${img})`
+        background: '#323232'
     },
     bottomAni: {
         padding: '10px',
@@ -82,7 +83,7 @@ export default function ScrollableTabsButtonForce(props) {
         setLoading(true)
         setTimeout(() => {
             setLoading(false)
-        }, 1000)
+        }, 500)
     };
 
     const [loading, setLoading] = React.useState(true);
@@ -92,7 +93,6 @@ export default function ScrollableTabsButtonForce(props) {
     }, 1000)
 
 
-    const img = "https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/pinpaijieshao_6116/images/2009301054191ij08.png?timestamp=1618365889572"
     return (
         <div className={classes.root}>
             <AppBar position="static" color="default">
@@ -114,20 +114,12 @@ export default function ScrollableTabsButtonForce(props) {
             </AppBar>
             {
                 props.tabs1.map(function (tab, index) {
-                    return (<TabPanel key={tab.label} value={value} index={index} className={classes.Tabcontainer} img={tab.url || img}>
-                        <div className={classes.bottomAni} style={{ top: loading ? '100%' : '100px' }}>
-                            <div style={{
-                                width: '80%',
-                                textAlign: 'left',
-                                color: '#eee'
-                            }}>
-                                <div>项目 {tab.label}</div>
-                                <div style={{ fontSize: '20px', color: 'goldenrod', marginBottom: '20px' }}>越秀集团  中国跨国公司15强</div>
-                                <div><span style={{ color: 'goldenrod' }}>1985</span>  年在香港成立</div>
-                                <div>广州最大的企业之一</div>
-                                <div>国内最大规模</div>
-                            </div>
-                        </div>
+                    return (<TabPanel key={tab.label} value={value} index={index} className={classes.Tabcontainer}>
+                        {
+                            tab.backimg.map((back, index) => {
+                                return <img key={index} style={{ ...back, position: 'absolute' }} src={back.url} alt={back.label} />
+                            })
+                        }
                     </TabPanel>)
                 })
             }

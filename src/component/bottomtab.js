@@ -109,14 +109,9 @@ const useStyles = makeStyles((theme) => ({
         color: 'rgba(195, 156, 124, 1)',
         padding: '16px 0'
     },
-    tab: {
-        width: 'calc(100% - 30px)',
-        height: `${width / 375 * 50}px`,
-        minHeight: ` ${width / 375 * 50}px`,
-        padding: 0,
+    tabs: {
         opacity: 1,
         fontWeight: '600',
-        color: 'rgba(195, 156, 124, 1)'
     }
 }));
 export default function ScrollableTabsButtonForce(props) {

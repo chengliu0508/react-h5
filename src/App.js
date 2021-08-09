@@ -30,12 +30,110 @@ const tabs = [
   { label: '项目6' },
 ]
 const tabs1 = [
-  { label: '房源1', value: 0, url: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic26.nipic.com%2F20130104%2F8821914_182437666135_2.jpg&refer=http%3A%2F%2Fpic26.nipic.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1630403300&t=ac121678cef397fa4810eb3a2158a9cd' },
-  { label: '房源2', value: 1, url: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fg.search1.alicdn.com%2Fimg%2Fbao%2Fuploaded%2Fi4%2Fi3%2F3316629412%2FO1CN01FMcH9S2JOkLW7pI7S_%21%213316629412.jpg&refer=http%3A%2F%2Fg.search1.alicdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1630403300&t=0c1724b49509786730df3df20f4bc7c8' },
-  { label: '房源3', value: 2, url: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fstatic.jisutui.vip%2Fdata%2Fupload%2F2021%2F05%2Ff3d82eeaefrgg2vl.jpg&refer=http%3A%2F%2Fstatic.jisutui.vip&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1630403300&t=a8aaebdea265865ca36166839f4d3c07' },
-  { label: '房源4', value: 3, url: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fnimg.ws.126.net%2F%3Furl%3Dhttp%253A%252F%252Fdingyue.ws.126.net%252F2021%252F0630%252F40244f31j00qvir8h002ac000qo00f0c.jpg%26thumbnail%3D650x2147483647%26quality%3D80%26type%3Djpg&refer=http%3A%2F%2Fnimg.ws.126.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1630403300&t=49602cc26018671f4bb77e04a30c2bb4' },
-  { label: '房源5', value: 4, url: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201201%2F30%2F20120130221359_u4dUj.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1630403300&t=65df99fe7d84aa4b5a51fcd51dadc3c1' },
-  { label: '房源6', value: 5, url: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic2.zhimg.com%2Fv2-fef0dc2e635415e5da4d8c6446461a61_1200x500.jpg&refer=http%3A%2F%2Fpic2.zhimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1630403300&t=36cc78f5405a1c63af90cab5c69c4bc9' },]
+  {
+    label: '越秀集团',
+    value: 0,
+    backimg: [
+      {
+        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/pinpaijieshao_6116/images/200930105419o0hpc.png',
+        left: '30.63vw',
+        top: 'calc(50vh - 26.72vw)',
+        width: '69.38vw',
+        height: '135vw',
+      },
+      {
+        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/pinpaijieshao_6116/images/200930105419k2sfb.png',
+        left: '7.19vw',
+        top: 'calc(50vh - 50.78vw)',
+        width: '53.75vw',
+        height: '70.63vw',
+      },
+    ]
+  }, {
+    label: '越秀地产',
+    value: 1,
+    backimg: [
+      {
+        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/pinpaijieshao_6116/images/2009301054191t2xe.png',
+        left: '41.88vw',
+        top: 'calc(50vh - 86.72vw)',
+        width: '58.13vw',
+        height: '98.44vw',
+      },
+      {
+        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/pinpaijieshao_6116/images/200930105419dk708.png',
+        eft: '56.56vw',
+        top: 'calc(50vh - 88.9vw)',
+        width: '43.44vw',
+        height: '85.62vw',
+      },
+      {
+        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/pinpaijieshao_6116/images/200930105419cfca6.png',
+        left: '6.25vw',
+        top: 'calc(50vh - 14.53vw)',
+        width: '49.06vw',
+        height: '64.69vw',
+      },
+    ]
+  },
+  {
+    label: '全国布局',
+    value: 2,
+    backimg: [
+      {
+        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglonghe…ges/210414100429c17nh.png',
+        left: '0vw',
+        top: 'calc(50vh - 23.59vw)',
+        width: '99.06vw',
+        height: '77.77vw',
+      }, {
+        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglonghe…ges/200930105419juoi7.png',
+        left: '7.81vw',
+        top: 'calc(50vh - 52.34vw)',
+        width: '52.19vw',
+        height: '37.18vw',
+      }
+    ]
+  },
+  {
+    label: '美好生活体系',
+    value: 3,
+    backimg: [
+      {
+        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglonghe…ges/200930105419lr6hv.png',
+        left: '10vw',
+        top: 'calc(50vh - 26.72vw)',
+        width: '79.06vw',
+        height: '43.74vw',
+      }, {
+        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglonghe…ges/2009301054191ij08.png',
+        left: '2.5vw',
+        top: 'calc(50vh - 50.78vw)',
+        width: '94.69vw',
+        height: '90.31vw',
+      }
+    ]
+  },
+  {
+    label: '越秀物业',
+    value: 4,
+    backimg: [
+      {
+        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglonghe…ges/200930105419cp4af.png',
+        left: '3.44vw',
+        top: 'calc(50vh - 30.79vw)',
+        width: '93.44vw',
+        height: '49.06vw',
+      }, {
+        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglonghe…ges/2009301054191ij08.png',
+        left: '3.44vw',
+        top: 'calc(50vh - 50.16vw)',
+        width: '93.13vw',
+        height: '88.13vw',
+      }
+    ]
+  }
+]
 
 const tabs2 = [
   { label: '日景', url: 'https://720yun.com/t/1avkzl7lrrm', tabimg: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/vr/panos/ketingn0fm.tiles/thumb.jpg?t=1601282506222' },
