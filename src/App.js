@@ -81,13 +81,13 @@ const tabs1 = [
     value: 2,
     backimg: [
       {
-        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglonghe…ges/210414100429c17nh.png',
+        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/pinpaijieshao_6116/images/210414100429c17nh.png',
         left: '0vw',
         top: 'calc(50vh - 23.59vw)',
         width: '99.06vw',
         height: '77.77vw',
       }, {
-        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglonghe…ges/200930105419juoi7.png',
+        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/pinpaijieshao_6116/images/200930105419juoi7.png',
         left: '7.81vw',
         top: 'calc(50vh - 52.34vw)',
         width: '52.19vw',
@@ -100,13 +100,13 @@ const tabs1 = [
     value: 3,
     backimg: [
       {
-        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglonghe…ges/200930105419lr6hv.png',
+        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/pinpaijieshao_6116/images/200930105419lr6hv.png',
         left: '10vw',
         top: 'calc(50vh - 26.72vw)',
         width: '79.06vw',
         height: '43.74vw',
       }, {
-        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglonghe…ges/2009301054191ij08.png',
+        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/pinpaijieshao_6116/images/2009301054191ij08.png',
         left: '2.5vw',
         top: 'calc(50vh - 50.78vw)',
         width: '94.69vw',
@@ -119,13 +119,13 @@ const tabs1 = [
     value: 4,
     backimg: [
       {
-        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglonghe…ges/200930105419cp4af.png',
+        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/pinpaijieshao_6116/images/200930105419cp4af.png',
         left: '3.44vw',
         top: 'calc(50vh - 30.79vw)',
         width: '93.44vw',
         height: '49.06vw',
       }, {
-        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglonghe…ges/2009301054191ij08.png',
+        url: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/pinpaijieshao_6116/images/2009301054191ij08.png',
         left: '3.44vw',
         top: 'calc(50vh - 50.16vw)',
         width: '93.13vw',

@@ -48,11 +48,13 @@ const useStyles = makeStyles((theme) => ({
         position: "relative"
     },
     Tabs: {
+        width: '100%',
         backgroundColor: '#393939',
         opacity: 0.7,
         color: '#fff',
         position: "absolute",
-        top: '10vh'
+        top: '10vh',
+        zIndex: 10000
     },
     Tab: {
         color: '#fff'
@@ -80,17 +82,17 @@ export default function ScrollableTabsButtonForce(props) {
     const handleChange = (event, newValue) => {
         setValue(newValue);
 
-        // setLoading(true)
-        // setTimeout(() => {
-        //     setLoading(false)
-        // }, 500)
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        }, 500)
     };
 
-    // const [loading, setLoading] = React.useState(true);
+    const [loading, setLoading] = React.useState(true);
 
-    // setTimeout(() => {
-    //     setLoading(false)
-    // }, 1000)
+    setTimeout(() => {
+        setLoading(false)
+    }, 1000)
 
 
     return (
@@ -117,7 +119,7 @@ export default function ScrollableTabsButtonForce(props) {
                     return (<TabPanel key={tab.label} value={value} index={index} className={classes.Tabcontainer}>
                         {
                             tab.backimg.map((back, index) => {
-                                return <img key={index} style={{ ...back, position: 'absolute' }} src={back.url} alt={back.label} />
+                                return <img key={index} style={{ ...back, top: index + 1 === tab.backimg.length && loading ? '100%' : back.top }} className={classes.bottomAni} src={back.url} alt={back.label} />
                             })
                         }
                     </TabPanel>)
