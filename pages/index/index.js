@@ -9,6 +9,7 @@ Page({
     const _this = this
     wx.login({
       success: res => {
+        console.log("wx.login" ,res)
         if (res.code) {
           getApp().globalData.code = res.code
           wx.request({

@@ -1,5 +1,5 @@
 <view class="login" wx:if="{{!nopermision}}">
-    <view class="login-desc">房地产是一款帮助你了解相关楼盘的小程序</view>
+    <view class="login-desc"><text style="color:red;font-size:18px;">一点VR</text>是一款帮助你了解相关楼盘的小程序</view>
     <view class="login-header">
         <image class="login-header__img" src="../../images/niuniu.jpg" mode="cover"></image> 
     </view>
