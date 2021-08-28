@@ -1,5 +1,5 @@
 <view class="admin-page">
     <homeCom wx:if="{{!current}}" userinfo="{{userinfo}}"></homeCom>
-    <visitCom wx:else></visitCom>
+    <visitCom wx:else customers="{{customers}}"></visitCom>
     <bottomTab bindcurrentChange="currentChange"></bottomTab>
 </view>

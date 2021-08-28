@@ -1,7 +1,8 @@
 Page({
   data: {
     current:0,
-    userinfo:{}
+    userinfo:{},
+    customers:[]
   },
   onLoad(){
      this.setNavTitle()
@@ -16,8 +17,11 @@ Page({
           wx.request({
             method:'POST',
             url: 'https://www.szzxh.top/api/saler/login',
+            header:{
+              'content-type' : 	'application/x-www-form-urlencoded'
+            },
             data: {
-              salerOpenid: res0.code
+              salerOpenid: '123456',//res0.code
             },
             success(res1) {
               if (res1.data) {
@@ -27,8 +31,10 @@ Page({
                     url: '/pages/edit/login?type=register',
                   })
                 }else{
+                  getApp().globalData.qrcode = res1.data.user.qrcode
                   _this.setData({
-                    userinfo:res1.data.userinfo
+                    userinfo:res1.data.user,
+                    customers:res1.data.customers
                   })
                 }
               }

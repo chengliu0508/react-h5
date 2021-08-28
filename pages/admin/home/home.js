@@ -3,7 +3,20 @@ Component({
   properties: {
     userinfo:{
       type:Object,
-      default:{nickName:'xiaoming'}
+      default:{
+        company: "公司伊",
+        id: 1,
+        name: "张三",
+        qrcode: ""
+      }
+    }
+  },
+  observers: {
+    'userinfo': function() {
+      console.log('userinfo changed',getApp().globalData,this.data.userinfo)
+      this.setData({
+        qrcode: this.data.userinfo.qrcode
+      })
     }
   },
 
@@ -12,9 +25,9 @@ Component({
   },
   pageLifetimes:{
     show(){
-      console.log('getApp().globalData',getApp().globalData)
+      console.log('getApp().globalData',getApp().globalData,this.data.userinfo)
       this.setData({
-        qrcode:getApp().globalData.qrcode
+        qrcode:getApp().globalData.qrcode || this.data.userinfo.qrcode
       })
     },
   },

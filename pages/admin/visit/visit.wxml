@@ -1,9 +1,9 @@
 <mp-cells ext-class="my-cells">
-    <mp-cell wx:for="{{visitList}}" wx:key="index">
+    <mp-cell wx:for="{{customers}}" wx:key="index">
         <view class="visit-item">
-          <image class="visit-img" src="{{item.img}}"></image>
-         <text  class="visit-name">{{item.name}}</text>
-         <text class="visit-phone" data-phone="{{item.phone}}" bindtap="clickphone">{{item.phone}}</text>
+          <image class="visit-img" src="{{item.img || '../../../images/client1.webp'}}"></image>
+         <text  class="visit-name">{{item.customerName}}</text>
+         <text class="visit-phone" data-phone="{{item.customerPhone}}" bindtap="clickphone">{{item.customerPhone}}</text>
          <text class="visit-time">{{item.date}}</text>
         </view>
     </mp-cell>

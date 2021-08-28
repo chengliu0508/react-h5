@@ -18,8 +18,8 @@ Page({
     let currenturl = getApp().getCurrentPages()
     let _this = this
     wx.navigateToMiniProgram({
-      appId: '', //客户端小程序appid
-      path: 'pages/login/login?code=' + currenturl.code,
+      appId: 'wx018abda72e8c7421', //客户端小程序appid
+      path: '/pages/login/login?code=' + currenturl.code,
       extraData: {
         foo: 'bar'
       },

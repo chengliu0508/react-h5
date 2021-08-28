@@ -3,27 +3,44 @@
 }
 
 .userinfo{
-  height:400rpx;
+  height:500rpx;
   position: relative;
+  display:flex;
+  justify-content: space-around;
 }
 .img{
-  height:400rpx;
+  height:500rpx;
   width:100%;
   position: absolute;
   left:0;
   z-index: 0;
 }
 
-.edit{
+.userinfo-desc,.edit{
   position: relative;
   z-index: 100;
+  width:50%;
+  text-align: left;
 }
+.visit-img{
+  width:80rpx;
+  height:80rpx;
+  border-radius: 50%;
+  top: 40rpx;
+  position: relative;
+  border: 1px solid #333;
+  margin: 10rpx;
+}
+.userinfo-desc{
+  margin-bottom:30px;
+}
+
 .edit .edit-button{
   z-index: 100;
   position: absolute;
   top:30rpx;
   right:30rpx;
-  background-color: #2196f3;
+  background-color: #065ba1;
   border-radius: 10rpx;
   padding:5rpx 20rpx;
   color:#fff;
