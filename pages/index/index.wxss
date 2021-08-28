@@ -1,20 +1,21 @@
 /**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #aaa;
-  margin:20rpx;
+.login-header{
+  display:flex;
+  justify-content: center;
+}
+.login-desc{
+  padding:20px;
+  text-align:center;
+}
+.login-header__img{
+   width:400rpx;
+   height:400rpx;
+   border-radius: 50%;
 }
 
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.usermotto {
-  margin-top: 200px;
+.exit-button{
+   margin-top:30px;
+   font-size:20px;
+   color:red;
+   text-decoration: underline;
 }

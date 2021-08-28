@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-     url:'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/index.html?timestamp=1599742908035&read_source=2#'
+     url:'https://www.wyxcl.xyz/build/index.html'
   },
 
   /**

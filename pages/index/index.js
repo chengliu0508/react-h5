@@ -1,36 +1,57 @@
 Page({
-  data: { 
-    code:0,
-    userInfo: {}, 
-    hasUserInfo: false,
-  }, 
-  onLoad(){
-    wx.navigateTo({
-      url: '/pages/login/login?code=12456',
+  data: {
+    nopermision: false,
+  },
+  onLoad() {
+    this.init()
+  },
+  init() {
+    const _this = this
+    wx.login({
+      success: res => {
+        if (res.code) {
+          getApp().globalData.code = res.code
+          wx.request({
+            url: 'https://www.szzxh.top/api/customer/login',
+            method:'post',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            data: {
+              customerOpenid: '123456' //res.code
+            },
+            success(res) {
+              if (res.data) {
+                console.log('用户信息',res.data)
+                if (res.data.code == 1 || res.data.msg == '用户未注册') {
+                  let currenturl = getApp().getCurrentPages()
+                  
+                    wx.reLaunch({
+                      url: '/pages/register/register',
+                    })
+                  // if (currenturl.code) {
+                  // } else {
+                  //   _this.setData({
+                  //     nopermision: true
+                  //   })
+                  // }
+                } else {
+                  getApp().globalData.userInfo = res.data
+                  wx.reLaunch({
+                    url: '/pages/webview/webview',
+                  })
+                }
+              } else {
+                console.log('用户接口未正确返回信息！～')
+              }
+            },
+            fail(res) {
+              console.log('获取用户接口失败！～')
+              _this.init()
+            }
+          })
+        }
+      },
     })
   },
-  // 事件处理函数 
-  bindViewTap(e) { 
-    let url = e.target && e.target.dataset && e.target.dataset.url
-    wx.navigateTo({ 
-      url: `../${url}/${url}`
-    }) 
-  }, 
-  getUserProfile(e) { 
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗 
-    wx.getUserProfile({ 
-      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写 
-      success: (res) => { 
-        console.log('getUserProfile',res) 
-        getApp().globalData.hasUserInfo = true
-        getApp().globalData.userInfo = res.userInfo
-
-        this.setData({ 
-          code:getApp().globalData.code,
-          userInfo: res.userInfo, 
-          hasUserInfo: true 
-        }) 
-      } 
-    }) 
-  }
 })
