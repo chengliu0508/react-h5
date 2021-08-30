@@ -1,10 +1,15 @@
-<view class="login" wx:if="{{!nopermision}}">
+<view class="login">
     <view class="login-desc"><text style="color:red;font-size:18px;">一点VR</text>是一款帮助你了解相关楼盘的小程序</view>
     <view class="login-header">
         <image class="login-header__img" src="../../images/niuniu.jpg" mode="cover"></image> 
     </view>
 </view>
-<view class="login-desc" wx:else>
+<view style="margin-top:40rpx;" wx:if="{{permisioncode === 2}}">
+  <button  class="weui-btn" type="primary"  open-type="getPhoneNumber" bindgetphonenumber="getUserPhone">微信用户一键登录</button>
+
+  <button  class="weui-btn" type="default"  open-type="getPhoneNumber" bindgetphonenumber="getUserPhone2">手机号码登录</button>
+</view>
+<view class="login-desc" wx:if="{{permisioncode === 3}}">
   页面需要由销售人员推荐才可访问
   <navigator class="exit-btn" open-type="exit" target="miniProgram" hover-class="navigator-hover">点击退出</navigator>
 </view>

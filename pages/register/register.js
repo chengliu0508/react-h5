@@ -1,5 +1,6 @@
 Page({
   data: {
+    needphone :'',
     formData: {
 
     },
@@ -22,7 +23,16 @@ Page({
     isAgree: false,
   },
   onLoad() {
-
+    this.setData({
+      needphone : !!getApp().globalData.needphone,
+      rules:getApp().globalData.needphone?this.data.rules:[{
+        name: 'customerName',
+        rules: {
+          required: true,
+          message: '昵称是必选项'
+        },
+      }]
+    })
   },
   getUserProfile(e) {
     let _this = this
@@ -77,15 +87,24 @@ Page({
       } else {
         wx.request({
           url: 'https://www.szzxh.top/api/customer/register',
+          method:'post',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
           data:{
             customerOpenId:getApp().globalData.code,
-            ...this.data.formData
+            customerMobile:this.data.formData.customerMobile || '1234',
+            customerName:this.data.formData.customerName,
+            saler_id:getApp().globalData.saler_id,
+            encryptedData:getApp().globalData.encryptedData,
+            sessionKey:getApp().globalData.encryptedData,
+            iv:getApp().globalData.iv
           },
           success(res) {
             console.log(res)
             if (res.data && res.data.code === 0) {
                 wx.reLaunch({
-                  url: '/pages/webview/webview',
+                  url: '/pages/index/index',
                 })
             } 
           },

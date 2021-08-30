@@ -9,13 +9,15 @@
           <button class="getinfo-btn" bindtap="getUserProfile" type="default" size="mini"> 获取昵称 </button>
         </view>
       </mp-cell>
-      <mp-cell prop="customerMobile" title="手机号" ext-class="weui-cell_vcode">
+      <mp-cell prop="customerMobile" title="手机号" wx:if="{{needphone}}">
         <input  value="{{formData.customerMobile}}" bindinput="formInputChange" data-field="customerMobile" class="weui-input" type="number"
           placeholder="请输入手机号" />
-        <view slot="footer" class="weui-vcode-btn">
+         
+        <!-- <view slot="footer" class="weui-vcode-btn">
           <button  class="getinfo-btn" open-type="getPhoneNumber" bindgetphonenumber="getUserPhone" type="default" size="mini"> 获取手机号 </button>
-        </view>
+        </view> -->
       </mp-cell>
+     
   </mp-form>
 
   <!-- <checkbox-group bindchange="bindAgreeChange" style="margin-top:32rpx;">
@@ -26,6 +28,7 @@
         </view>
       </label>
   </checkbox-group> -->
+
   <view class="weui-btn-area">
       <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
   </view>

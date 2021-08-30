@@ -1,6 +1,6 @@
 Page({
   data: {
-    nopermision: false,
+    permisioncode: 1,
   },
   onLoad() {
     this.init()
@@ -19,23 +19,17 @@ Page({
               'content-type': 'application/x-www-form-urlencoded' // 默认值
             },
             data: {
-              customerOpenid: '123456' //res.code
+              customerOpenid: res.code
             },
             success(res) {
               if (res.data) {
-                console.log('用户信息',res.data)
+                console.log('用户信息',res.data,getApp().getCurrentPages() )
                 if (res.data.code == 1 || res.data.msg == '用户未注册') {
-                  let currenturl = getApp().getCurrentPages()
-                  
-                    wx.reLaunch({
-                      url: '/pages/register/register',
+                  let currenturl = getApp().getCurrentPages()     
+                  getApp().globalData.saler_id = currenturl.code         
+                    _this.setData({
+                      permisioncode: currenturl.code?3:2,
                     })
-                  // if (currenturl.code) {
-                  // } else {
-                  //   _this.setData({
-                  //     nopermision: true
-                  //   })
-                  // }
                 } else {
                   getApp().globalData.userInfo = res.data
                   wx.reLaunch({
@@ -55,4 +49,23 @@ Page({
       },
     })
   },
+
+  //微信用户一键登录
+  getUserPhone(e){
+    console.log('getUserPhone',e.detail)
+    if(e.detail.errMsg.indexOf('ok')>-1 && e.detail.encryptedData){
+      getApp().globalData.encryptedData = e.detail.encryptedData
+      getApp().globalData.sessionKey = e.detail.cloudID
+      getApp().globalData.iv = e.detail.iv
+      wx.reLaunch({
+        url: '/pages/register/register',
+      })
+    }
+  },
+
+  //手机号码登录
+  getUserPhone2(e){
+    getApp().globalData.needphone = true
+    this.getUserPhone(e)
+  }
 })
