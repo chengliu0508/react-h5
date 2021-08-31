@@ -1,4 +1,4 @@
 
 <view class="page-body">
-    <web-view src="https://www.wyxcl.xyz/build/"  binderror="binderror" bindload="binderror"></web-view>
+    <web-view src="{{url}}"  binderror="binderror" bindload="binderror"></web-view>
 </view>

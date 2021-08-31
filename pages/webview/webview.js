@@ -2,11 +2,13 @@
 Page({
 
   data: {
-     url:'https://www.wyxcl1.xyz'
+     url:'https://www.ydvr.xyz/build'
   },
 
   onLoad: function (options) {
-
+     this.setData({
+      url:'https://www.ydvr.xyz/build?openId=' + getApp().globalData.openId
+     })
   },
 
 

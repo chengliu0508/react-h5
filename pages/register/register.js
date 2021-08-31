@@ -86,26 +86,26 @@ Page({
         }
       } else {
         wx.request({
-          url: 'https://www.szzxh.top/api/customer/register',
+          url: 'https://www.ydvr.xyz/api/customer/register',
           method:'post',
           header: {
             'content-type': 'application/x-www-form-urlencoded' // 默认值
           },
           data:{
-            customerOpenId:getApp().globalData.code,
-            customerMobile:this.data.formData.customerMobile || '1234',
+            openId:getApp().globalData.openId,
+            sessionKey:getApp().globalData.sessionKey,
+            customerMobile:this.data.formData.customerMobile,
             customerName:this.data.formData.customerName,
-            saler_id:getApp().globalData.saler_id,
+            saler_id:getApp().globalData.saler_id || 1,
             encryptedData:getApp().globalData.encryptedData,
-            sessionKey:getApp().globalData.encryptedData,
             iv:getApp().globalData.iv
           },
           success(res) {
             console.log(res)
             if (res.data && res.data.code === 0) {
-                wx.reLaunch({
-                  url: '/pages/index/index',
-                })
+              wx.reLaunch({
+                url: '/pages/webview/webview',
+              })
             } 
           },
           fail(res) {

@@ -13,25 +13,28 @@ Page({
         if (res.code) {
           getApp().globalData.code = res.code
           wx.request({
-            url: 'https://www.szzxh.top/api/customer/login',
+            url: 'https://www.ydvr.xyz/api/customer/login',
             method:'post',
             header: {
               'content-type': 'application/x-www-form-urlencoded' // 默认值
             },
             data: {
-              customerOpenid: res.code
+              code: res.code
             },
             success(res) {
               if (res.data) {
-                console.log('用户信息',res.data,getApp().getCurrentPages() )
+                console.log('用户信息',res.data)
+                getApp().globalData.saler_id = 1   
+                getApp().globalData.openId = res.data.openId    
+                
                 if (res.data.code == 1 || res.data.msg == '用户未注册') {
                   let currenturl = getApp().getCurrentPages()     
-                  getApp().globalData.saler_id = currenturl.code         
+  
+                  getApp().globalData.sessionKey = res.data.sessionKey  
                     _this.setData({
                       permisioncode: currenturl.code?3:2,
                     })
                 } else {
-                  getApp().globalData.userInfo = res.data
                   wx.reLaunch({
                     url: '/pages/webview/webview',
                   })
@@ -55,12 +58,17 @@ Page({
     console.log('getUserPhone',e.detail)
     if(e.detail.errMsg.indexOf('ok')>-1 && e.detail.encryptedData){
       getApp().globalData.encryptedData = e.detail.encryptedData
-      getApp().globalData.sessionKey = e.detail.cloudID
       getApp().globalData.iv = e.detail.iv
       wx.reLaunch({
         url: '/pages/register/register',
       })
     }
+  },
+
+  //手机号码登录
+  getUserPhone1(e){
+    getApp().globalData.needphone = false
+    this.getUserPhone(e)
   },
 
   //手机号码登录
