@@ -79,16 +79,17 @@ Page({
           })
         }
       } else {
+        let currenturl = getApp().getCurrentPages()
         wx.request({
           method:'POST',
-          url: 'https://www.ydvr.xyz/api/saler/register',
+          url: 'https://www.ydvr.xyz/api/saler/' +(currenturl.type ==='register'?'register':'editSaler'),
           header:{
             'content-type' : 	'application/x-www-form-urlencoded'
           },
           data:{
             openId:getApp().globalData.openId,
             salerName:this.data.formData.salerName,
-            salerCompany:this.data.companylistoptions[this.data.accountIndex]
+            salerCompany:this.data.companylist[this.data.accountIndex].id
           },
           success(res) {
             console.log('销售端注册成功，返回信息：',res,getApp().globalData)
