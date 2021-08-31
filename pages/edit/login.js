@@ -27,7 +27,7 @@ Page({
   requestCompany (){
     let _this = this
     wx.request({
-      url: 'https://www.szzxh.top/api/saler/getCompany', //仅为示例，并非真实的接口地址
+      url: 'https://www.ydvr.xyz/api/saler/getCompany', //仅为示例，并非真实的接口地址
       data: {
       },
       success (res) {
@@ -81,9 +81,12 @@ Page({
       } else {
         wx.request({
           method:'POST',
-          url: 'https://www.szzxh.top/api/saler/register',
+          url: 'https://www.ydvr.xyz/api/saler/register',
+          header:{
+            'content-type' : 	'application/x-www-form-urlencoded'
+          },
           data:{
-            salerOpenid:getApp().globalData.code,
+            openId:getApp().globalData.openId,
             salerName:this.data.formData.salerName,
             salerCompany:this.data.companylistoptions[this.data.accountIndex]
           },

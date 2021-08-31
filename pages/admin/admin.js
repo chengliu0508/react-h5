@@ -13,19 +13,19 @@ Page({
     wx.login({
       success: res0 => {
         if (res0.code) {
-          getApp().globalData.code = res0.code
           wx.request({
             method:'POST',
-            url: 'https://www.szzxh.top/api/saler/login',
+            url: 'https://www.ydvr.xyz/api/saler/login',
             header:{
               'content-type' : 	'application/x-www-form-urlencoded'
             },
             data: {
-              salerOpenid: '123456',//res0.code
+              code: res0.code
             },
             success(res1) {
               if (res1.data) {
                 console.log('用户信息',res1.data)
+                getApp().globalData.openId = res1.data.openId
                 if(res1.data.code === 1){
                   wx.navigateTo({
                     url: '/pages/edit/login?type=register',
@@ -50,7 +50,7 @@ Page({
   onShareAppMessage() {
     return {
       title: '房产页面',
-      path: '/pages/share/share?code=123456'
+      path: '/pages/share/share?code=' + getApp().globalData.openId
     }
   },
   setNavTitle(current){
