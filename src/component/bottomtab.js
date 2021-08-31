@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -116,6 +116,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function ScrollableTabsButtonForce(props) {
     const classes = useStyles();
+    var propstabs = props.tabs && props.tabs.map((item, index) => {
+        return { label: (item && item.model_name) || ('项目' + (index + 1)) }
+    }) || []
+    useEffect(() => {
+        propstabs = props.tabs && props.tabs.map((item, index) => {
+            return { label: (item && item.model_name) || ('项目' + (index + 1)) }
+        }) || []
+    }, [props.tabs])
 
     const handleChange = (event, newValue) => {
         props.handleChange(newValue);
@@ -139,7 +147,7 @@ export default function ScrollableTabsButtonForce(props) {
                 scrollButtons="off"
             >
                 {
-                    props.tabs.map((item, index) => {
+                    propstabs.map((item, index) => {
                         return <AntTab style={{ color: props.value === index ? 'rgba(195, 156, 124, 1)' : '#fff' }} key={index} label={item.label} icon={getIcon(index)} {...a11yProps(index)} />
                     })
                 }

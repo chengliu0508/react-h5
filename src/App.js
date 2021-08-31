@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-import Module1 from './component/module1'
-import Bottomtab from './component/bottomtab'
 import Module2 from './component/module2'
+import Bottomtab from './component/bottomtab'
+import Module1 from './component/module1'
 
 var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 const useStyles = makeStyles({
@@ -29,6 +29,7 @@ const tabs = [
   { label: '项目5' },
   { label: '项目6' },
 ]
+
 const tabs1 = [
   {
     label: '越秀集团',
@@ -136,27 +137,48 @@ const tabs1 = [
 ]
 
 const tabs2 = [
-  { label: '日景', url: 'https://720yun.com/t/1avkzl7lrrm', tabimg: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/vr/panos/ketingn0fm.tiles/thumb.jpg?t=1601282506222' },
-  { label: '夜景', url: 'https://720yun.com/t/08vkzl7lr1h', tabimg: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/vr/panos/zhuwei3q1l.tiles/thumb.jpg?t=1600234892242' },
-  { label: '景观一', url: 'https://720yun.com/t/e7vkzl7ld8h', tabimg: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/vr/panos/720yuexiuzhanglong-xiangmu0000v83w.tiles/thumb.jpg?t=1600237375289' },
-  { label: '景观二', url: 'https://720yun.com/t/dcvkzl7ld2w', tabimg: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/vr/panos/yangtai04d2.tiles/thumb.jpg?t=1601282544662' },
-  { label: '景观三', url: 'https://720yun.com/t/1evkzl7ldpe', tabimg: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/vr/panos/720syuexiuzhanglong-quyu0000zxxa.tiles/thumb.jpg?t=1600237444562' },
-  { label: '华发悦谷', url: 'https://720yun.com/t/b6vkter9g19', tabimg: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/vr/panos/ketingn0fm.tiles/thumb.jpg?t=1601282506222' },
+  // { label: '日景', url: 'https://7adm262bnei.720yun.com/t/1avkzl7lrrm', tabimg: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/vr/panos/ketingn0fm.tiles/thumb.jpg?t=1601282506222' },
+  // { label: '夜景', url: 'https://7adm262bnei.720yun.com/t/08vkzl7lr1h', tabimg: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/vr/panos/zhuwei3q1l.tiles/thumb.jpg?t=1600234892242' },
+  // { label: '景观一', url: 'https://7adm262bnei.720yun.com/t/e7vkzl7ld8h', tabimg: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/vr/panos/720yuexiuzhanglong-xiangmu0000v83w.tiles/thumb.jpg?t=1600237375289' },
+  // { label: '景观二', url: 'https://7adm262bnei.720yun.com/t/dcvkzl7ld2w', tabimg: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/vr/panos/yangtai04d2.tiles/thumb.jpg?t=1601282544662' },
+  // { label: '景观三', url: 'https://7adm262bnei.720yun.com/t/1evkzl7ldpe', tabimg: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/vr/panos/720syuexiuzhanglong-quyu0000zxxa.tiles/thumb.jpg?t=1600237444562' },
+  // { label: '华发悦谷', url: 'https://7adm262bnei.720yun.com/t/b6vkter9g19', tabimg: 'https://infishow.ideamake.cn/icp/yuexiuzhanglongheyuefu_12126/vr/panos/ketingn0fm.tiles/thumb.jpg?t=1601282506222' },
 ]
+
+var getlist = (setValist) => {
+  window.fetch("/api/customer/login", {
+    method: 'post',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    data: {
+      customerOpenid: '123456'
+    }
+  })
+    .then(res => { return res.json() })
+    .then(res => { console.log(res.data); setValist(res.data) })
+}
 
 export default function App() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const [valist, setValist] = React.useState([]);
+
+
+  useEffect(() => {
+    getlist(setValist)
+  }, [])
+
 
   return (
     <div className={classes.root}>
       <div className={classes.container}>
-        {value % 2 ? <Module1 tabs1={tabs1}></Module1> : <Module2 tabs2={tabs2}></Module2>}
+        {valist[value] ? (valist[value].model_type === '1' ? <Module1 tabs1={valist[value].conetnt}></Module1> : <Module2 tabs2={valist[value].conetnt}></Module2>) : null}
       </div>
       <Bottomtab
         className={classes.bottomtab}
         value={value}
-        tabs={tabs}
+        tabs={valist}
         handleChange={e => {
           setValue(e)
         }}

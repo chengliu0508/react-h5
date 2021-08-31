@@ -1,36 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-
-function TabPanel(props) {
-    const classes = useStyles()
-    const { children, value, index, img, ...other } = props;
-    return (
-        <div
-            className={classes.tabpanel}
-            role="tabpanel"
-            hidden={value !== index}
-            id={`scrollable-force-tabpanel-${index}`}
-            aria-labelledby={`scrollable-force-tab-${index}`}
-            {...other}
-        >
-            {
-                value === index && (<Typography>{children}</Typography>)
-            }
-        </div>
-    );
-}
-
-TabPanel.propTypes = {
-    children: PropTypes.node,
-    img: PropTypes.string,
-    index: PropTypes.any.isRequired,
-    value: PropTypes.any.isRequired,
-};
+import DoubleArrow from '@material-ui/icons/DoubleArrow';
+import FirstPage from '@material-ui/icons/FirstPage';
 
 function a11yProps(index) {
     return {
@@ -38,93 +11,109 @@ function a11yProps(index) {
         'aria-controls': `scrollable-force-tabpanel-${index}`,
     };
 }
+const StyledTabs = withStyles({
+    indicator: {
+        display: 'flex',
+        justifyContent: 'center',
+        '& > span': {
+            maxWidth: 40,
+            width: '100%',
+            backgroundColor: '#635ee7',
+        },
+    },
+})((props) => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
 
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        flexGrow: 1,
         width: '100%',
         height: '100%',
-        position: "relative"
-    },
-    Tabs: {
-        width: '100%',
-        backgroundColor: '#393939',
-        opacity: 0.7,
-        color: '#fff',
-        position: "absolute",
-        top: '10vh',
-        zIndex: 10000
-    },
-    Tab: {
-        color: '#fff'
-    },
-    Tabcontainer: {
-        height: '100% ',
+        backgroundRepeat: 'no',
         backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        background: '#323232'
+        backgroundAttachment: 'fixed',
     },
-    bottomAni: {
-        padding: '10px',
-        // animation: 'myBottom 5s',
-        position: 'absolute',
-        top: '100%',
-        transition: 'top 5s',
+    padding: {
+        padding: theme.spacing(3),
+    },
+    StyledTabs: {
+        display: 'flex',
+        position: "absolute",
+        left: '0px',
+        maxWidth: 'calc(100% - 16px)',
+        bottom: '80px',
+        color: '#fff',
+        backgroundColor: '#000',
+        opacity: 0.7,
+        borderRadius: '0 30px 30px 0',
+        transition: 'width 0.5s',
+    },
+    tabs: {
+        //transition: 'width 0.5s',
+    },
+    more: {
+        height: '50px',
+        padding: '16px 10px'
     }
 }));
 
 
-export default function ScrollableTabsButtonForce(props) {
+var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+export default function Module2(props) {
     const classes = useStyles();
-    const [value, setValue] = React.useState(0);
-
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-
-        setLoading(true)
-        setTimeout(() => {
-            setLoading(false)
-        }, 500)
-    };
-
+    const [more, setMore] = React.useState(true);
+    const [active, setActive] = React.useState(0);
     const [loading, setLoading] = React.useState(true);
-
-    setTimeout(() => {
-        setLoading(false)
-    }, 1000)
-
+    const url = props.tabs1 && props.tabs1[0] && props.tabs1[0].url
 
     return (
         <div className={classes.root}>
-            <AppBar position="static" color="default">
-                <Tabs
-                    className={classes.Tabs}
-                    value={value}
-                    onChange={handleChange}
-                    variant="scrollable"
-                    scrollButtons="on"
-                    indicatorColor="primary"
-                    textColor="primary"
-                >
-                    {
-                        props.tabs1.map(function (tab, index) {
-                            return <Tab className={classes.Tab} key={tab.label} label={tab.label} {...a11yProps(index)} />
-                        })
-                    }
-                </Tabs>
-            </AppBar>
+            <iframe onLoad={() => { setLoading(false) }} style={{ display: active === 0 ? 'block' : 'none' }} title={url} src={url} frameBorder="no" width={width} height={height} ></iframe>
+
             {
-                props.tabs1.map(function (tab, index) {
-                    return (<TabPanel key={tab.label} value={value} index={index} className={classes.Tabcontainer}>
-                        {
-                            tab.backimg.map((back, index) => {
-                                return <img key={index} style={{ ...back, top: index + 1 === tab.backimg.length && loading ? '100%' : back.top }} className={classes.bottomAni} src={back.url} alt={back.label} />
-                            })
-                        }
-                    </TabPanel>)
+                loading ? null : props.tabs1.map((item, index) => {
+                    return index > 0 ? <iframe style={{ display: active === index ? 'block' : 'none' }} key={item.url} title={item.url} src={item.url} frameBorder="no" width={width} height={height} ></iframe> : null
                 })
             }
+
+            <div className={classes.StyledTabs} style={{
+                width: more ? 'calc(100% - 10px)' : '40px'
+            }}>
+                <StyledTabs
+                    style={{
+                        width: more ? 'calc(100% - 50px)' : '0px',
+                        transition: more ? 'width 0s' : 'width 1s'
+                    }}
+                    className={classes.tabs}
+                    value={active}
+                    onChange={(e, value) => setActive(value)}
+                    variant="scrollable"
+                    scrollButtons="off"
+                >
+                    {
+                        props.tabs1.map((item, index) => {
+                            const StyledTab = withStyles((theme) => ({
+                                root: {
+                                    color: 'red',
+                                    opacity: 1,
+                                    backgroundImage: `url(${props.tabs1[index].tabimg})`,
+                                    backgroundSize: 'contain',
+                                    fontWeight: theme.typography.fontWeightRegular,
+                                    fontSize: theme.typography.pxToRem(13),
+                                    margin: '5px',
+                                    width: '20%',
+                                    height: '50px',
+                                    border: index === active ? '2px solid rgba(195, 156, 124, 1)' : '2px solid #fff',
+                                },
+                            }))((props) => <Tab {...props} />);
+                            return <StyledTab key={index} label={item.label} {...a11yProps(index)} />
+                        })
+                    }
+                </StyledTabs>
+                <div onClick={e => setMore(!more)} className={classes.more}
+                >{more ? <FirstPage /> : <DoubleArrow />}</div>
+            </div>
         </div >
     );
 }
