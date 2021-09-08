@@ -19,7 +19,7 @@ Page({
     let _this = this
     wx.navigateToMiniProgram({
       appId: 'wx018abda72e8c7421', //客户端小程序appid
-      path: '/pages/login/login?saler_id=' + currenturl.openId,
+      path: '/pages/index/index?saler_id=' + currenturl.openId,
       envVersion: 'develop',
       success(res) {
         // 打开成功
