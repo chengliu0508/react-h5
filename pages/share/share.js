@@ -5,11 +5,11 @@ Page({
   },
   onLoad: function (options) {
     let currenturl = getApp().getCurrentPages()
-    if(currenturl.code){
+    if(currenturl.openId){
       this.setData({
         adminstatus:1
       })
-      console.log('销售端分享的code为：' + currenturl.code)
+      console.log('销售端分享的code为：' + currenturl.openId)
       this.gotoLogin()
     }
   },
@@ -19,10 +19,7 @@ Page({
     let _this = this
     wx.navigateToMiniProgram({
       appId: 'wx018abda72e8c7421', //客户端小程序appid
-      path: '/pages/login/login?saler_id=' + currenturl.code,
-      extraData: {
-        foo: 'bar'
-      },
+      path: '/pages/login/login?saler_id=' + currenturl.openId,
       envVersion: 'develop',
       success(res) {
         // 打开成功

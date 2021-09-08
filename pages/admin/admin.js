@@ -26,11 +26,14 @@ Page({
               if (res1.data) {
                 console.log('用户信息',res1.data)
                 getApp().globalData.openId = res1.data.openId
+               
                 if(res1.data.code === 1){
                   wx.navigateTo({
                     url: '/pages/edit/login?type=register',
                   })
                 }else{
+                  getApp().globalData.name = res1.data.user.name
+                  getApp().globalData.company = res1.data.user.company
                   getApp().globalData.qrcode = res1.data.user.qrcode
                   _this.setData({
                     userinfo:res1.data.user,
@@ -50,7 +53,7 @@ Page({
   onShareAppMessage() {
     return {
       title: '房产页面',
-      path: '/pages/share/share?code=' + getApp().globalData.openId
+      path: '/pages/share/share?openId=' + getApp().globalData.openId
     }
   },
   setNavTitle(current){

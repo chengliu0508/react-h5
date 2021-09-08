@@ -33,7 +33,10 @@ Page({
       success (res) {
         console.log(res.data)
         if(res.data.data){
+          let accountIndex = res.data.data.findIndex(item=> item.companyName === getApp().globalData.company) 
           _this.setData({
+            'formData.salerName':getApp().globalData.name,
+            accountIndex:accountIndex>-1? accountIndex : 0,
             companylistoptions:res.data.data.map(item=>item.companyName),
             companylist:res.data.data
           })
