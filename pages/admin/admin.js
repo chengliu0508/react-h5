@@ -52,7 +52,7 @@ Page({
   },
   onShareAppMessage() {
     return {
-      title: '房产页面',
+      title: '全景介绍',
       path: '/pages/share/share?openId=' + getApp().globalData.openId
     }
   },
