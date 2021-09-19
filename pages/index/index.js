@@ -24,13 +24,15 @@ Page({
             success(res) {
               if (res.data) {
                 console.log('用户信息',res.data)
-                getApp().globalData.saler_id = 1   
+              
                 getApp().globalData.openId = res.data.openId    
                 
                 if (res.data.code == 1 || res.data.msg == '用户未注册') {
                   let currenturl = getApp().getCurrentPages()     
   
                   getApp().globalData.sessionKey = res.data.sessionKey  
+                  getApp().globalData.saler_id = currenturl.code  
+
                     _this.setData({
                       permisioncode: currenturl.code?2:3,
                     })
