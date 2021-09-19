@@ -32,7 +32,7 @@ Page({
   
                   getApp().globalData.sessionKey = res.data.sessionKey  
                     _this.setData({
-                      permisioncode: currenturl.code?3:2,
+                      permisioncode: currenturl.code?2:3,
                     })
                 } else {
                   wx.reLaunch({

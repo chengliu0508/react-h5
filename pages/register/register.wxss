@@ -9,9 +9,6 @@ page{
   color:blue;
   text-decoration: underline;
 }
-.weui-cell_vcode{
-  t
-}
 .getinfo-btn{
   margin:27rpx 0;
 }
