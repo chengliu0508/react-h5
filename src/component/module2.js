@@ -63,13 +63,19 @@ const useStyles = makeStyles((theme) => ({
         height: '100% ',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        background: '#323232'
+        background: '#323232',
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        overflow: 'hidden'
+
     },
     bottomAni: {
         padding: '10px',
         // animation: 'myBottom 5s',
         position: 'absolute',
-        top: '100%',
         transition: 'top 5s',
     }
 }));
@@ -118,8 +124,9 @@ export default function ScrollableTabsButtonForce(props) {
                 props.tabs2.map(function (tab, index) {
                     return (<TabPanel key={tab.label} value={value} index={index} className={classes.Tabcontainer}>
                         {
-                            tab.backimg.map((back, index) => {
-                                return <img key={index} style={{ ...back, top: index + 1 === tab.backimg.length && loading ? '100%' : back.top }} className={classes.bottomAni} src={back.url} alt={back.label} />
+                            tab.backimg && tab.backimg.length && tab.backimg.map((back, index) => {
+                                let top = (index + 1 === tab.backimg.length && loading) ? '100%' : (back.top || '0')
+                                return <img key={index} style={{ ...back, top }} className={classes.bottomAni} src={back.url} alt={back.label} />
                             })
                         }
                     </TabPanel>)
