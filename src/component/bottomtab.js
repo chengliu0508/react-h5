@@ -17,20 +17,6 @@ import BusinessIcon from '@material-ui/icons/Business';
 import CastForEducationIcon from '@material-ui/icons/CastForEducation';
 import CategoryIcon from '@material-ui/icons/Category';
 
-const AntTab = withStyles((theme) => ({
-    root: {
-        fontSize: '12px',
-        textTransform: 'none',
-        color: '#fff',
-        height: '50px',
-        minHeight: '50px',
-        opacity: 1,
-        '&:hover': {
-            color: '#40a9ff',
-            opacity: 1,
-        },
-    },
-}))((props) => <Tab {...props} />);
 
 function a11yProps(index) {
     return {
@@ -116,15 +102,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function ScrollableTabsButtonForce(props) {
     const classes = useStyles();
-    var propstabs = props.tabs && props.tabs.map((item, index) => {
-        return { label: (item && item.model_name) || ('项目' + (index + 1)) }
-    }) || []
-    useEffect(() => {
-        propstabs = props.tabs && props.tabs.map((item, index) => {
-            return { label: (item && item.model_name) || ('项目' + (index + 1)) }
-        }) || []
-    }, [props.tabs])
-
     const handleChange = (event, newValue) => {
         props.handleChange(newValue);
     };
@@ -147,8 +124,25 @@ export default function ScrollableTabsButtonForce(props) {
                 scrollButtons="off"
             >
                 {
-                    propstabs.map((item, index) => {
-                        return <AntTab style={{ color: props.value === index ? 'rgba(195, 156, 124, 1)' : '#fff' }} key={index} label={item.label} icon={getIcon(index)} {...a11yProps(index)} />
+                    props.tabs && props.tabs.map((item, index) => {
+                        const AntTab = withStyles((theme) => ({
+                            root: {
+                                fontSize: '12px',
+                                textTransform: 'none',
+                                color: '#fff',
+                                height: '50px',
+                                minHeight: '50px',
+                                opacity: 1,
+                                '&:hover': {
+                                    color: '#40a9ff',
+                                    opacity: 1,
+                                },
+                                background: `url(${item.bottom_icon}) no-repeat center`,
+                                backgroundSize: 'contain',
+                            },
+                        }))((props) => <Tab {...props} />);
+
+                        return <AntTab style={{ color: props.value === index ? 'rgba(195, 156, 124, 1)' : '#fff' }} key={index} label='' {...a11yProps(index)} />
                     })
                 }
             </Tabs>

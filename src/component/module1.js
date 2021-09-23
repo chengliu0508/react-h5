@@ -97,8 +97,9 @@ export default function Module2(props) {
                                 root: {
                                     color: 'red',
                                     opacity: 1,
-                                    backgroundImage: `url(${props.tabs1[index].tabimg})`,
+                                    backgroundImage: `url(${item.tabimg})`,
                                     backgroundSize: 'contain',
+                                    backgroundRepeat: 'no',
                                     fontWeight: theme.typography.fontWeightRegular,
                                     fontSize: theme.typography.pxToRem(13),
                                     margin: '5px',
@@ -107,7 +108,7 @@ export default function Module2(props) {
                                     border: index === active ? '2px solid rgba(195, 156, 124, 1)' : '2px solid #fff',
                                 },
                             }))((props) => <Tab {...props} />);
-                            return <StyledTab key={index} label={item.label} {...a11yProps(index)} />
+                            return <StyledTab key={index} label='' {...a11yProps(index)} />
                         })
                     }
                 </StyledTabs>
