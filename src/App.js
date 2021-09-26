@@ -49,7 +49,7 @@ export default function App() {
   return (
     <div className={classes.root}>
       <div className={classes.container}>
-        {valist && valist[value] ? (valist[value].model_type === '1' ? <Module1 tabs1={valist[value].conetnt}></Module1> : <Module2 tabs2={valist[value].conetnt}></Module2>) : null}
+        {valist && valist[value] ? (valist[value].model_type === '1' ? <Module1 tabs1={valist[value]}></Module1> : <Module2 tabs2={valist[value].conetnt}></Module2>) : null}
       </div>
       <Bottomtab
         className={classes.bottomtab}

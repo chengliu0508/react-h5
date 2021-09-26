@@ -125,7 +125,7 @@ export default function ScrollableTabsButtonForce(props) {
                     return (<TabPanel key={tab.label} value={value} index={index} className={classes.Tabcontainer}>
                         {
                             tab.backimg && tab.backimg.length && tab.backimg.map((back, index) => {
-                                let top = (index + 1 === tab.backimg.length && loading) ? '100%' : (back.top || '0')
+                                let top = (index !== 0 && loading) ? '100%' : (back.top || '0')
                                 return <img key={index} style={{ ...back, top }} className={classes.bottomAni} src={back.url} alt={back.label} />
                             })
                         }

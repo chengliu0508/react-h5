@@ -1,28 +1,5 @@
 import React from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import DoubleArrow from '@material-ui/icons/DoubleArrow';
-import FirstPage from '@material-ui/icons/FirstPage';
-
-function a11yProps(index) {
-    return {
-        id: `scrollable-force-tab-${index}`,
-        'aria-controls': `scrollable-force-tabpanel-${index}`,
-    };
-}
-const StyledTabs = withStyles({
-    indicator: {
-        display: 'flex',
-        justifyContent: 'center',
-        '& > span': {
-            maxWidth: 40,
-            width: '100%',
-            backgroundColor: '#635ee7',
-        },
-    },
-})((props) => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
-
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -62,59 +39,11 @@ var height = window.innerHeight || document.documentElement.clientHeight || docu
 
 export default function Module2(props) {
     const classes = useStyles();
-    const [more, setMore] = React.useState(true);
-    const [active, setActive] = React.useState(0);
-    const [loading, setLoading] = React.useState(true);
-    const url = props.tabs1 && props.tabs1[0] && props.tabs1[0].url
-
+    var url = props.tabs1 && props.tabs1.sand_table_url
+    url = url || (props.tabs1 && props.tabs1.conetnt && props.tabs1.conetnt.length && props.tabs1.conetnt[0] && props.tabs1.conetnt[0].url)
     return (
         <div className={classes.root}>
-            <iframe onLoad={() => { setLoading(false) }} style={{ display: active === 0 ? 'block' : 'none' }} title={url} src={url} frameBorder="no" width={width} height={height} ></iframe>
-
-            {
-                loading ? null : props.tabs1.map((item, index) => {
-                    return index > 0 ? <iframe style={{ display: active === index ? 'block' : 'none' }} key={item.url} title={item.url} src={item.url} frameBorder="no" width={width} height={height} ></iframe> : null
-                })
-            }
-
-            <div className={classes.StyledTabs} style={{
-                width: more ? 'calc(100% - 10px)' : '40px'
-            }}>
-                <StyledTabs
-                    style={{
-                        width: more ? 'calc(100% - 50px)' : '0px',
-                        transition: more ? 'width 0s' : 'width 1s'
-                    }}
-                    className={classes.tabs}
-                    value={active}
-                    onChange={(e, value) => setActive(value)}
-                    variant="scrollable"
-                    scrollButtons="off"
-                >
-                    {
-                        props.tabs1.map((item, index) => {
-                            const StyledTab = withStyles((theme) => ({
-                                root: {
-                                    color: 'red',
-                                    opacity: 1,
-                                    backgroundImage: `url(${item.tabimg})`,
-                                    backgroundSize: 'contain',
-                                    backgroundRepeat: 'no',
-                                    fontWeight: theme.typography.fontWeightRegular,
-                                    fontSize: theme.typography.pxToRem(13),
-                                    margin: '5px',
-                                    width: '20%',
-                                    height: '50px',
-                                    border: index === active ? '2px solid rgba(195, 156, 124, 1)' : '2px solid #fff',
-                                },
-                            }))((props) => <Tab {...props} />);
-                            return <StyledTab key={index} label='' {...a11yProps(index)} />
-                        })
-                    }
-                </StyledTabs>
-                <div onClick={e => setMore(!more)} className={classes.more}
-                >{more ? <FirstPage /> : <DoubleArrow />}</div>
-            </div>
+            <iframe title={url} src={url} frameBorder="no" width={width} height={height} ></iframe>
         </div >
     );
 }
